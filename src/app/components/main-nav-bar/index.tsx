@@ -1,12 +1,12 @@
 // import { Button } from "@/src/components/ui/button";
 
-import { ThemeModeToggle } from "@/src/components/theme-mode-toggle";
+import { ThemeModeToggle } from "@/src/components/theme-mode-toggle"
 
 export default function MainNavbar() {
   return (
     <nav className="flex w-full justify-between py-5">
       <span className="text-xl font-bold -tracking-wider">URL Shortener</span>
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         {/* <a href="#">Home</a>
         <a href="#">Settings</a> */}
         <ThemeModeToggle />
@@ -16,5 +16,5 @@ export default function MainNavbar() {
         <Button variant="outline">Sign Up</Button>
       </div> */}
     </nav>
-  );
+  )
 }

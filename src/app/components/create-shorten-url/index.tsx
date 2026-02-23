@@ -1,35 +1,31 @@
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/src/components/ui/tabs";
-import CreateTemporalyShortenUrl from "./create-temporaly-shorten-url";
-import { Clock, Lock } from "lucide-react";
-import CreatePermanentShortenUrl from "./create-permanent-shorten-url";
+import { Clock, Lock } from "lucide-react"
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs"
+
+import CreateTemporalyShortenUrl from "./create-temporaly-shorten-url"
+import CreatePermanentShortenUrl from "./create-permanent-shorten-url"
 
 export default function CreateShortenURL() {
-
   return (
-    <div className="flex w-full flex-col items-start gap-3 mt-8">
-      <Tabs defaultValue="temporaly" className="flex w-full">
+    <div className="mt-8 flex w-full flex-col items-start gap-3">
+      <Tabs className="flex w-full" defaultValue="temporaly">
         <TabsList>
           <TabsTrigger value="temporaly">
             <Clock />
             Temporaly
           </TabsTrigger>
-          <TabsTrigger value="permanent" disabled>
+          <TabsTrigger disabled value="permanent">
             <Lock />
             Permanent
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="temporaly" className="min-h-17">
+        <TabsContent className="min-h-17" value="temporaly">
           <CreateTemporalyShortenUrl />
         </TabsContent>
-        <TabsContent value="permanent" className="min-h-17">
+        <TabsContent className="min-h-17" value="permanent">
           <CreatePermanentShortenUrl />
         </TabsContent>
       </Tabs>
     </div>
-  );
+  )
 }
