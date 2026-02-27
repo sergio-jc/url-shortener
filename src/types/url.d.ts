@@ -1,9 +1,9 @@
-type ShortenURLType = "temporaly" | "permanent";
+type ShortenURLType = "temporaly" | "permanent"
 
 interface ShortenURLResult {
-  slug: string;
-  longUrl: string;
-  createdAt: string;
-  expiresAt: string;
-  type: ShortenURLType;
+  slug: string
+  longUrl: string
+  createdAt: string
+  expiresAt: string
+  type: ShortenURLType
 }

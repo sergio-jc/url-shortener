@@ -1,28 +1,24 @@
-import Link from "next/link";
-import ShortenUrlItem from "./shorten-url-item";
+import ShortenUrlItem from "./shorten-url-item"
 
 interface RecentShortennedURLsProps {
-  recentShortennedURLs: ShortenURLResult[];
+  recentShortennedURLs: ShortenURLResult[]
 }
 
-export default async function RecentShortennedURLs(
-  props: RecentShortennedURLsProps,
-) {
-  const { recentShortennedURLs } = props;
+export default async function RecentShortennedURLs(props: RecentShortennedURLsProps) {
+  const { recentShortennedURLs } = props
+
   return (
     <div className="flex w-full flex-col">
-      <h2 className="mt-8 mb-4 text-xl font-semibold">
-        Your Recent Shortened URLs
-      </h2>
+      <h2 className="mt-8 mb-4 text-xl font-semibold">Your Recent Shortened URLs</h2>
 
       <ol className="flex flex-col">
         {recentShortennedURLs.map((shortenURL) => (
           <li key={shortenURL.slug} className="contents">
             <ShortenUrlItem
-              type={shortenURL.type}
-              slug={shortenURL.slug}
-              originalUrl={shortenURL.longUrl}
               createdAt={shortenURL.createdAt}
+              originalUrl={shortenURL.longUrl}
+              slug={shortenURL.slug}
+              type={shortenURL.type}
             />
           </li>
         ))}
@@ -35,5 +31,5 @@ export default async function RecentShortennedURLs(
         .
       </p> */}
     </div>
-  );
+  )
 }

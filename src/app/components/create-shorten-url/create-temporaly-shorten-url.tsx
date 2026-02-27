@@ -1,10 +1,11 @@
-"use client";
-import { useActionState } from "react";
-import { Scissors } from "lucide-react";
+"use client"
+import { useActionState } from "react"
+import { Scissors } from "lucide-react"
+import { toast } from "sonner"
 
-import { Input } from "@/src/components/ui/input";
-import { Button } from "@/src/components/ui/button";
-import { ButtonGroup } from "@/src/components/ui/button-group";
+import { Input } from "@/src/components/ui/input"
+import { Button } from "@/src/components/ui/button"
+import { ButtonGroup } from "@/src/components/ui/button-group"
 import {
   Select,
   SelectContent,
@@ -13,32 +14,32 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
-import { toast } from "sonner";
-import { createShortUrl } from "../../actions";
+} from "@/src/components/ui/select"
+
+import { createShortUrl } from "../../actions"
 
 export default function CreateTemporalyShortenUrl() {
-
   const handleCreateShortUrl = async (_prevState: unknown, formData: FormData) => {
-    const result = await createShortUrl(null, formData);
+    const result = await createShortUrl(null, formData)
+
     if (result.success) {
-      toast.success("URL shortened successfully! The short URL has been copied to your clipboard.");
-      window.navigator.clipboard.writeText(`${window.location.origin}/${result.result.slug}`);
+      toast.success("URL shortened successfully! The short URL has been copied to your clipboard.")
+      await window.navigator.clipboard.writeText(`${window.location.origin}/${result.result.slug}`)
     } else {
-      toast.error(result.error);
+      toast.error(result.error)
     }
   }
 
-  const [, formAction] = useActionState(handleCreateShortUrl, null);
+  const [, formAction] = useActionState(handleCreateShortUrl, null)
 
   return (
-    <form className="flex w-full gap-1" action={formAction}>
+    <form action={formAction} className="flex w-full gap-1">
       <ButtonGroup className="flex w-full">
         <Input
           autoFocus
           required
-          placeholder="Type or paste your long url here: https://example.com/..."
           name="url"
+          placeholder="Type or paste your long url here: https://example.com/..."
           type="url"
         />
         {/* <Select defaultValue="temporaly">
@@ -78,5 +79,5 @@ export default function CreateTemporalyShortenUrl() {
         </Button>
       </ButtonGroup>
     </form>
-  );
+  )
 }

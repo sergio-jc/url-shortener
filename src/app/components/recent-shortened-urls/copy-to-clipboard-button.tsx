@@ -1,24 +1,25 @@
-"use client";
+"use client"
 
-import { Button } from "@/src/components/ui/button";
-import { toast } from "sonner";
-import { Copy } from "lucide-react";
+import { Copy } from "lucide-react"
+import { toast } from "sonner"
+
+import { Button } from "@/src/components/ui/button"
 
 interface CopyToClipboardButtonProps {
-  content: string;
+  content: string
 }
 
 export default function CopyToClipboardButton(props: CopyToClipboardButtonProps) {
-  const { content } = props;
+  const { content } = props
   const handleCopyShortUrl = () => {
-    window.navigator.clipboard.writeText(
-      `${window.location.origin}/${content}`,
-    );
-    toast.success("Short URL copied to clipboard!");
-  };
+    window.navigator.clipboard.writeText(`${window.location.origin}/${content}`)
+    toast.success("Short URL copied to clipboard!")
+  }
+
   return (
-    <Button variant="ghost" size="sm" onClick={handleCopyShortUrl}>
-      <Copy /> Copy
+    <Button size="sm" variant="ghost" onClick={handleCopyShortUrl}>
+      <Copy />
+      Copy
     </Button>
-  );
+  )
 }
