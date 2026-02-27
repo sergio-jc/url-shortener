@@ -1,20 +1,14 @@
-// import { Button } from "@/src/components/ui/button";
+import Link from "next/link"
 
-import { ThemeModeToggle } from "@/src/components/theme-mode-toggle"
+import { NavBarOptions } from "./nav-bar-options"
 
-export default function MainNavbar() {
+export default async function MainNavbar() {
   return (
-    <nav className="flex w-full justify-between py-5">
-      <span className="text-xl font-bold -tracking-wider">URL Shortener</span>
-      <div className="flex items-center gap-4">
-        {/* <a href="#">Home</a>
-        <a href="#">Settings</a> */}
-        <ThemeModeToggle />
-      </div>
-      {/* <div className="flex gap-2">
-        <Button>Sign In</Button>
-        <Button variant="outline">Sign Up</Button>
-      </div> */}
+    <nav className="flex w-full items-center justify-between py-3">
+      <Link href="/">
+        <h1 className="text-xl font-bold -tracking-wider">URL Shortener</h1>
+      </Link>
+      <NavBarOptions />
     </nav>
   )
 }
