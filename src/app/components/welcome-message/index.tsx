@@ -19,7 +19,7 @@ const WelcomeMessage = (props: WelcomeMessageProps) => {
 
   return (
     <div>
-      <h2 className="text-4xl font-semibold">{message.title}</h2>
+      <h2 className="text-3xl font-semibold sm:text-4xl">{message.title}</h2>
       <p className="mpt-2 text-lg text-gray-600 dark:text-gray-300">{message.description}</p>
     </div>
   )

@@ -2,6 +2,7 @@
 import { useActionState } from "react"
 import { Scissors } from "lucide-react"
 import { toast } from "sonner"
+import { User } from "better-auth"
 
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
@@ -15,22 +16,46 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/src/components/ui/select"
+import {
+  createTempShortUrl,
+  CreateTempShortUrlFormState,
+} from "@/src/actions/short-url/create-temp-short-url"
+import { URLDurationOptions } from "@/src/constants/url"
+import { FieldError } from "@/src/components/ui/field"
+import { saveTempShortUrl } from "@/src/lib/local-storage"
+import { MinimalShortUrlDTO } from "@/src/dto/minimal-short-url"
 
-import { createShortUrl } from "../../actions"
+interface CreateTemporalyShortenUrlProps {
+  isAuthenticated: boolean
+  user: User | null
+}
 
-export default function CreateTemporalyShortenUrl() {
-  const handleCreateShortUrl = async (_prevState: unknown, formData: FormData) => {
-    const result = await createShortUrl(null, formData)
+export default function CreateTemporalyShortenUrl(props: CreateTemporalyShortenUrlProps) {
+  const { isAuthenticated, user } = props
+  const handleCreateShortUrl = async (
+    _prevState: CreateTempShortUrlFormState | null,
+    formData: FormData,
+  ) => {
+    const result = await createTempShortUrl({
+      longUrl: formData.get("url") as string,
+      duration: (formData.get("duration") as URLDurationOptions) ?? "7days",
+      userId: user?.id,
+    })
 
     if (result.success) {
       toast.success("URL shortened successfully! The short URL has been copied to your clipboard.")
-      await window.navigator.clipboard.writeText(`${window.location.origin}/${result.result.slug}`)
+      await window.navigator.clipboard.writeText(`${window.location.origin}/${result.data?.slug}`)
+      if (!isAuthenticated) {
+        saveTempShortUrl(MinimalShortUrlDTO.parse(result.data))
+      }
     } else {
-      toast.error(result.error)
+      toast.error(result.message)
     }
+
+    return result
   }
 
-  const [, formAction] = useActionState(handleCreateShortUrl, null)
+  const [state, formAction] = useActionState(handleCreateShortUrl, null)
 
   return (
     <form action={formAction} className="flex w-full gap-1">
@@ -60,7 +85,7 @@ export default function CreateTemporalyShortenUrl() {
             </SelectGroup>
           </SelectContent>
         </Select> */}
-        <Select defaultValue="7days">
+        <Select defaultValue="7days" name="duration">
           <SelectTrigger className="w-full max-w-26 sm:max-w-36">
             <SelectValue placeholder="Select a time" />
           </SelectTrigger>
@@ -78,6 +103,9 @@ export default function CreateTemporalyShortenUrl() {
           Shorten
         </Button>
       </ButtonGroup>
+      {!state?.success && state?.error?.type === "validation" && (
+        <FieldError>{state?.error?.issues?.longUrl}</FieldError>
+      )}
     </form>
   )
 }
