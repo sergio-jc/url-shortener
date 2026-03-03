@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation"
 import { headers } from "next/headers"
 
-import { auth } from "../lib/auth"
-import { ActionState } from "../types/action"
+import { auth } from "@/src/lib/auth"
+import { ActionState } from "@/src/types/action"
 
 export const logOut = async (): Promise<ActionState<null> | never> => {
   try {

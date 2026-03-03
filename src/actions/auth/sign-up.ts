@@ -3,8 +3,8 @@
 import * as z from "zod"
 import { redirect } from "next/navigation"
 
-import { auth } from "../lib/auth"
-import { ActionState } from "../types/action"
+import { auth } from "@/src/lib/auth"
+import { ActionState } from "@/src/types/action"
 
 const SignUpSchema = z.object({
   email: z.email({ message: "Invalid email address." }).trim(),
@@ -25,7 +25,6 @@ export type SignUp = z.infer<typeof SignUpSchema>
 export type SignUpFormState = ActionState<SignUp>
 
 export const signUp = async (signUp: SignUp): Promise<SignUpFormState> => {
-  console.log("🚀 ~ signUp ~ signUp:", signUp)
   const result = SignUpSchema.safeParse(signUp)
 
   if (!result.success) {

@@ -3,8 +3,8 @@
 import * as z from "zod"
 import { redirect } from "next/navigation"
 
-import { auth } from "../lib/auth"
-import { ActionState } from "../types/action"
+import { auth } from "@/src/lib/auth"
+import { ActionState } from "@/src/types/action"
 
 const LoginSchema = z.object({
   email: z.email({ message: "Please enter a valid email." }).trim(),
