@@ -41,7 +41,7 @@ const AuthenticatedGeneratedUrls = async (props: AuthenticatedGeneratedUrlsProps
       </ol>
       <div className="flex justify-center gap-2">
         <Button asChild variant="outline">
-          <Link href="/sign-up">
+          <Link href="/dashboard">
             <ArrowRight className="size-4" />
             Administra todos tus URLs
           </Link>

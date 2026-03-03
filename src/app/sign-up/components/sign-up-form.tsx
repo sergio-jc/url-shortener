@@ -13,7 +13,7 @@ import {
   FieldLabel,
   FieldSeparator,
 } from "@/src/components/ui/field"
-import { cn } from "@/src/lib/styles"
+import { cn } from "@/src/lib/utils"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
 import { Github, Google } from "@/src/components/brand-icons"

@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache"
 import db from "@/src/db"
 import { ActionState } from "@/src/types/action"
 import { ShortenURLType, shortUrl } from "@/src/db/schema"
-import { generateRandomSlug } from "@/src/lib/utils"
+import { generateRandomSlug } from "@/src/lib/url"
 import { SHORTEN_URL_DURATION, URLDurationOptions } from "@/src/constants/url"
 import { MinimalShortUrlDTO } from "@/src/dto/minimal-short-url"
 

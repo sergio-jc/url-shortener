@@ -5,7 +5,7 @@ import { useActionState } from "react"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 
-import { cn } from "@/src/lib/styles"
+import { cn } from "@/src/lib/utils"
 import { Button } from "@/src/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
 import {

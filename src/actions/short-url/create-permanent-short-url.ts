@@ -8,7 +8,7 @@ import { ActionState } from "@/src/types/action"
 import { MinimalShortUrlDTO } from "@/src/dto/minimal-short-url"
 import db from "@/src/db"
 import { ShortenURLType, shortUrl } from "@/src/db/schema"
-import { generateRandomSlug } from "@/src/lib/utils"
+import { generateRandomSlug } from "@/src/lib/url"
 
 const CreatePermanentShortUrlSchema = z.object({
   longUrl: z.url({ message: "Invalid URL" }).trim(),
