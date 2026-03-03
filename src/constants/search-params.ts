@@ -1,0 +1,9 @@
+const DEFAULT_PAGE = 1
+const DEFAULT_PAGE_SIZE = 10
+const DEFAULT_SEARCH = ""
+
+export const DEFAULT_SEARCH_PARAMS = {
+  page: DEFAULT_PAGE,
+  pageSize: DEFAULT_PAGE_SIZE,
+  search: DEFAULT_SEARCH,
+}

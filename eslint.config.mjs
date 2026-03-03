@@ -59,6 +59,7 @@ const nextLintingConfig = defineConfig([
   {
     rules: {
       "@next/next/no-img-element": "off",
+      "react-hooks/incompatible-library": "off",
     },
   },
 ])
