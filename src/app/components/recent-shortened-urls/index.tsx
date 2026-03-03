@@ -1,35 +1,19 @@
-import ShortenUrlItem from "./shorten-url-item"
+import { User } from "better-auth"
+
+import UnauthenticatedGeneratedUrls from "./unauthenticated-generated-urls"
+import AuthenticatedGeneratedUrls from "./authenticated-generated-urls"
 
 interface RecentShortennedURLsProps {
-  recentShortennedURLs: ShortenURLResult[]
+  isAuthenticated: boolean
+  user: User | null
 }
 
 export default async function RecentShortennedURLs(props: RecentShortennedURLsProps) {
-  const { recentShortennedURLs } = props
+  const { isAuthenticated, user } = props
 
-  return (
-    <div className="flex w-full flex-col">
-      <h2 className="mt-8 mb-4 text-xl font-semibold">Your Recent Shortened URLs</h2>
+  if (isAuthenticated && user) {
+    return <AuthenticatedGeneratedUrls user={user} />
+  }
 
-      <ol className="flex flex-col">
-        {recentShortennedURLs.map((shortenURL) => (
-          <li key={shortenURL.slug} className="contents">
-            <ShortenUrlItem
-              createdAt={shortenURL.createdAt}
-              originalUrl={shortenURL.longUrl}
-              slug={shortenURL.slug}
-              type={shortenURL.type}
-            />
-          </li>
-        ))}
-      </ol>
-      {/* <p className="mt-4 text-sm text-neutral-500">
-        See all your shortened URLs in the{" "}
-        <Link href="/dashboard" className="text-blue-500 hover:underline">
-          dashboard
-        </Link>
-        .
-      </p> */}
-    </div>
-  )
+  return <UnauthenticatedGeneratedUrls />
 }

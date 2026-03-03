@@ -5,7 +5,7 @@ import { useActionState } from "react"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/src/lib/styles"
 import { Button } from "@/src/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
 import {
@@ -18,7 +18,7 @@ import {
 } from "@/src/components/ui/field"
 import { Input } from "@/src/components/ui/input"
 import { Github, Google } from "@/src/components/brand-icons"
-import { login, LoginFormState } from "@/src/actions/log-in"
+import { login, LoginFormState } from "@/src/actions/auth/log-in"
 import { signInWithGithub, signInWithGoogle } from "@/src/lib/auth-client"
 
 export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {

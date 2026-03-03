@@ -3,7 +3,7 @@
 import { LogOutIcon } from "lucide-react"
 
 import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu"
-import { logOut } from "@/src/actions/log-out"
+import { logOut } from "@/src/actions/auth/log-out"
 
 const LogOutOption = () => {
   return (
