@@ -13,12 +13,12 @@ import {
   FieldLabel,
   FieldSeparator,
 } from "@/src/components/ui/field"
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/src/lib/styles"
 import { Input } from "@/src/components/ui/input"
 import { Button } from "@/src/components/ui/button"
 import { Github, Google } from "@/src/components/brand-icons"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { signUp, SignUpFormState } from "@/src/actions/sign-up"
+import { signUp, SignUpFormState } from "@/src/actions/auth/sign-up"
 import { signInWithGithub, signInWithGoogle } from "@/src/lib/auth-client"
 
 export function SignUpForm({ className, ...props }: React.ComponentProps<"div">) {
