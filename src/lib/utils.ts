@@ -1,6 +1,11 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { BASE_62_CHARACTERS, SHORTENED_URL_LENGTH } from "../constants/url"
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+export function generateRandomSlug(): string {
+  let generatedSlug = ""
+
+  for (let i = 1; i <= SHORTENED_URL_LENGTH; i++) {
+    generatedSlug += BASE_62_CHARACTERS[Math.floor(Math.random() * BASE_62_CHARACTERS.length)]
+  }
+
+  return generatedSlug
 }
