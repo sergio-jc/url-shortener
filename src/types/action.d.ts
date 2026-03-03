@@ -1,6 +1,6 @@
-export interface SuccessActionState<T> {
+export interface SuccessActionState<I> {
   success: true
-  data?: T
+  data?: I
   message?: string
 }
 
@@ -15,4 +15,6 @@ export interface ErrorActionState<T> {
   message?: string
 }
 
-export type ActionState<T> = SuccessActionState<T> | ErrorActionState<T>
+export type ActionState<Input, SuccessResult = Input> =
+  | SuccessActionState<SuccessResult>
+  | ErrorActionState<Input>
