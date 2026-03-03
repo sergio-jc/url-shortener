@@ -36,7 +36,6 @@ export async function POST(request: NextRequest) {
   // Save the result to the database
   TEMP_KEY_VAL_DB[generatedSlug] = result
 
-  console.log("🚀 ~ TEMP_KEY_VAL_DB:", TEMP_KEY_VAL_DB)
   revalidatePath("/")
 
   return Response.json(result)

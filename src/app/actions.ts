@@ -31,10 +31,7 @@ export async function createShortUrl(_prevState: unknown, formData: FormData) {
     type: "temporaly",
   }
 
-  console.log("🚀 ~ createShortUrl ~ result:", result)
-
   TEMP_KEY_VAL_DB[generatedSlug] = result
-  console.log("🚀 ~ createShortUrl ~ TEMP_KEY_VAL_DB:", TEMP_KEY_VAL_DB)
 
   revalidatePath("/")
 
