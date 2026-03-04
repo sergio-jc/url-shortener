@@ -5,6 +5,7 @@ import { auth } from "@/src/lib/auth"
 import { BasicSearchParams, BasicSearchParamsSchema } from "@/src/dto/search-params"
 
 import ShortUrlsTable from "./components/short-urls-table"
+import DashboardStats from "./components/dashboard-stats"
 
 export default async function DashboardPage({
   searchParams,
@@ -24,7 +25,8 @@ export default async function DashboardPage({
   }
 
   return (
-    <div className="flex w-full max-w-full flex-col gap-4">
+    <div className="flex w-full max-w-full flex-col py-4">
+      <DashboardStats userId={session?.user?.id} />
       <ShortUrlsTable searchParams={basicSearchParams} userId={session?.user?.id} />
     </div>
   )

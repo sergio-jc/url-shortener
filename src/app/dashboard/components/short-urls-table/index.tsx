@@ -1,4 +1,4 @@
-import { and, eq, like } from "drizzle-orm"
+import { and, desc, eq, like } from "drizzle-orm"
 
 import db from "@/src/db"
 import { shortUrl } from "@/src/db/schema"
@@ -22,7 +22,10 @@ const ShortUrlsTable = async (props: ShortUrlsTableProps) => {
   )
 
   const basequery = db.select().from(shortUrl).where(whereClause)
-  const data = await basequery.limit(Number(pageSize)).offset((Number(page) - 1) * Number(pageSize))
+  const data = await basequery
+    .orderBy(desc(shortUrl.createdAt))
+    .limit(Number(pageSize))
+    .offset((Number(page) - 1) * Number(pageSize))
 
   const total = await db.$count(shortUrl, whereClause)
   const pageCount = Math.max(1, Math.ceil(total / Number(pageSize)))
