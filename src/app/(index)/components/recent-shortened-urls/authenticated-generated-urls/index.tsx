@@ -10,6 +10,8 @@ import { Button } from "@/src/components/ui/button"
 
 import ShortenUrlItem from "../shorten-url-item"
 
+import EmptyStateAuthenticated from "./empty-state-authenticated"
+
 interface AuthenticatedGeneratedUrlsProps {
   user: User
 }
@@ -23,6 +25,14 @@ const AuthenticatedGeneratedUrls = async (props: AuthenticatedGeneratedUrlsProps
     .where(eq(shortUrl.userId, user.id))
     .orderBy(desc(shortUrl.createdAt))
     .limit(RECENT_SHORT_URLS_AMOUNT)
+
+  if (shortUrls.length === 0) {
+    return (
+      <div className="flex flex-col gap-4 py-4">
+        <EmptyStateAuthenticated />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-4">
