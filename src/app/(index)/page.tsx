@@ -1,6 +1,6 @@
 import { headers } from "next/headers"
 
-import { auth } from "../lib/auth"
+import { auth } from "../../lib/auth"
 
 import CreateShortenURL from "./components/create-shorten-url"
 import RecentShortennedURLs from "./components/recent-shortened-urls"

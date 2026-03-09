@@ -13,11 +13,12 @@ export default async function DashboardPage({
   searchParams: Promise<BasicSearchParams>
 }) {
   const params = await searchParams
-  const basicSearchParams = await BasicSearchParamsSchema.parseAsync(params)
+  const basicSearchParams = BasicSearchParamsSchema.parse(params)
 
   const session = await auth.api.getSession({
     headers: await headers(),
   })
+
   const isAuthenticated = Boolean(session)
 
   if (!isAuthenticated || !session?.user?.id) {

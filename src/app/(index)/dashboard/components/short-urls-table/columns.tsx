@@ -97,5 +97,7 @@ export const columns: ColumnDef<ShortUrl>[] = [
   {
     id: "actions",
     cell: ({ row }) => <RowOptions row={row} />,
+    size: 64,
+    enablePinning: true,
   },
 ]
