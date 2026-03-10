@@ -8,11 +8,20 @@ import { Button } from "@/src/components/ui/button"
 
 import ShortenUrlItem from "../shorten-url-item"
 
+import ProductFeaturesCta from "./product-features-cta"
 import useLocalSavedShortUrls from "./use-local-saved-short-urls"
 
 function UnauthenticatedGeneratedUrlsComponent() {
   const { tempShortUrl, exceedLimit, thereAreExpiredTempShortUrl, removeExpiredTempShortUrl } =
     useLocalSavedShortUrls()
+
+  if (tempShortUrl.length === 0) {
+    return (
+      <div className="flex flex-col gap-4 py-4">
+        <ProductFeaturesCta />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-4">

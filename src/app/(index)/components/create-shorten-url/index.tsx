@@ -15,7 +15,7 @@ export default function CreateShortenURL(props: CreateShortenURLProps) {
   const { isAuthenticated, user } = props
 
   return (
-    <div className="mt-8 flex w-full flex-col items-start gap-3">
+    <div className="mt-8 flex w-full flex-col items-start gap-3" id="create-shorten-url">
       <Tabs className="flex w-full" defaultValue="temporaly">
         <TabsList>
           <TabsTrigger value="temporaly">

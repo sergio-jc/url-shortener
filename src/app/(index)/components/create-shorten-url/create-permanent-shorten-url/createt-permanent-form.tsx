@@ -1,7 +1,7 @@
 import { User } from "better-auth"
 import { toast } from "sonner"
 import { useActionState } from "react"
-import { Scissors } from "lucide-react"
+import { Loader2, Scissors } from "lucide-react"
 
 import { ButtonGroup } from "@/src/components/ui/button-group"
 import { Input } from "@/src/components/ui/input"
@@ -40,7 +40,7 @@ export const CreatePermanentShortenUrlComponent = (
     return result
   }
 
-  const [state, formAction] = useActionState(handleCreateShortUrl, null)
+  const [state, formAction, isPending] = useActionState(handleCreateShortUrl, null)
 
   return (
     <div className="flex w-full flex-col items-start gap-2">
@@ -59,8 +59,8 @@ export const CreatePermanentShortenUrlComponent = (
             placeholder="Type your slug here: example"
             type="text"
           />
-          <Button className="" type="submit">
-            <Scissors />
+          <Button className="" disabled={isPending} type="submit">
+            {isPending ? <Loader2 className="animate-spin" /> : <Scissors />}
             Shorten
           </Button>
         </ButtonGroup>
