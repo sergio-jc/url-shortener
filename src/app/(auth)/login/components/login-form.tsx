@@ -31,7 +31,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     if (result.success) {
       toast.success("Logged in successfully.")
     } else {
-      toast.error(result.message ?? "Failed to login.")
+      toast.error("Failed to login.")
     }
 
     return result

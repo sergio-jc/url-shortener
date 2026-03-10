@@ -30,7 +30,7 @@ export function SignUpForm({ className, ...props }: React.ComponentProps<"div">)
     })
 
     if (!result?.success) {
-      toast.error(result?.message ?? "Failed to create account.")
+      toast.error("Failed to create account.")
     }
 
     return result

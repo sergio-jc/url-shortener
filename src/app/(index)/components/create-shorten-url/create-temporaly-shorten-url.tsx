@@ -1,6 +1,6 @@
 "use client"
 import { useActionState } from "react"
-import { Scissors } from "lucide-react"
+import { Loader2, Scissors } from "lucide-react"
 import { toast } from "sonner"
 import { User } from "better-auth"
 
@@ -55,7 +55,7 @@ export default function CreateTemporalyShortenUrl(props: CreateTemporalyShortenU
     return result
   }
 
-  const [state, formAction] = useActionState(handleCreateShortUrl, null)
+  const [state, formAction, isPending] = useActionState(handleCreateShortUrl, null)
 
   return (
     <form action={formAction} className="flex w-full gap-1">
@@ -98,8 +98,8 @@ export default function CreateTemporalyShortenUrl(props: CreateTemporalyShortenU
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button className="" type="submit">
-          <Scissors />
+        <Button className="" disabled={isPending} type="submit">
+          {isPending ? <Loader2 className="animate-spin" /> : <Scissors />}
           Shorten
         </Button>
       </ButtonGroup>
