@@ -1,12 +1,12 @@
-import { Settings } from "lucide-react"
+// import { Settings } from "lucide-react"
 
 import { Button } from "@/src/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
+  // DropdownMenuGroup,
+  // DropdownMenuItem,
+  // DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu"
 
@@ -21,13 +21,13 @@ export function DropdownMenuAvatar({ children }: { children: React.ReactNode }) 
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuGroup>
+        {/* <DropdownMenuGroup>
           <DropdownMenuItem>
             <Settings />
             Settings
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator /> */}
         <LogOutOption />
       </DropdownMenuContent>
     </DropdownMenu>
