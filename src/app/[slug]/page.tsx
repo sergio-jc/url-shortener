@@ -1,17 +1,12 @@
-import type { NextRequest } from "next/server"
-
 import { eq } from "drizzle-orm"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import db from "@/src/db"
 import { ShortenURLType, shortUrl } from "@/src/db/schema"
 
 export const dynamic = "force-dynamic"
 
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
-) {
+export default async function SlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
   const result = await db.select().from(shortUrl).where(eq(shortUrl.slug, slug)).limit(1).execute()
@@ -28,7 +23,6 @@ export async function GET(
     notFound()
   }
 
-  // update tracking data
   await db
     .update(shortUrl)
     .set({
@@ -38,5 +32,5 @@ export async function GET(
     .where(eq(shortUrl.slug, slug))
     .execute()
 
-  return Response.redirect(result[0].longUrl)
+  redirect(result[0].longUrl)
 }
