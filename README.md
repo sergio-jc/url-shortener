@@ -1,3 +1,6 @@
+
+<img width="1200" height="505" alt="repo cover" src="https://github.com/user-attachments/assets/75e934af-4d00-43fc-b554-4a3b062a4c17" />
+
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js 16" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React 19" />
