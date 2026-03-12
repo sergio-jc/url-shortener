@@ -9,6 +9,7 @@ const EnvSchema = z.object({
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
   PRIVATE_API_KEY: z.string(),
+  CRON_SECRET: z.string().optional(),
 })
 
 export type EnvSchema = z.infer<typeof EnvSchema>
