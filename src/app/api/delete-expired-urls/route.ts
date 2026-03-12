@@ -8,8 +8,9 @@ import { ShortenURLType, shortUrl } from "@/src/db/schema"
 
 export async function DELETE(request: NextRequest) {
   const secret = request.headers.get("Authorization")?.split(" ")[1] ?? ""
+  const validSecrets = [env.PRIVATE_API_KEY, env.CRON_SECRET].filter(Boolean)
 
-  if (secret !== env.PRIVATE_API_KEY) {
+  if (!validSecrets.includes(secret)) {
     return new Response("Unauthorized", {
       status: 401,
       headers: { "Content-Type": "application/json" },

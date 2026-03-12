@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/delete-expired-urls",
+      "schedule": "0 0 28 * *"
+    }
+  ]
+}
